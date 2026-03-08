@@ -61,6 +61,9 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/news', async (req, res) => {
+  // Prevent caching so every poll gets fresh RSS data
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.set('Pragma', 'no-cache');
   try {
     const all = await Promise.all(FEEDS.map(fetchFeed));
     const items = all.flat();

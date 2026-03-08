@@ -1,4 +1,4 @@
-const REFRESH_MS = 90 * 1000; // 90 seconds
+const REFRESH_MS = 60 * 1000; // 60 seconds
 
 const storyListEl = document.getElementById('storyList');
 const loadingEl = document.getElementById('loading');
@@ -57,7 +57,7 @@ function escapeHtml(s) {
 
 async function fetchNews() {
   try {
-    const res = await fetch('/api/news');
+    const res = await fetch(`/api/news?t=${Date.now()}`, { cache: 'no-store' });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Request failed');
 
