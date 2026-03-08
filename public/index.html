@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iran–UAE & Gulf War News — Live</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">Iran–UAE & Gulf War News</h1>
+      <p class="tagline">Live updates from Al Jazeera, BBC Middle East & verified sources</p>
+      <div class="meta">
+        <span class="last-updated" id="lastUpdated">Loading…</span>
+        <span class="refresh-hint">Auto-refresh every 90 seconds</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main container">
+    <section class="filters">
+      <label class="filter-label">
+        <input type="checkbox" id="filterRelevant" checked />
+        <span>Prioritise Iran / UAE / Gulf / strikes</span>
+      </label>
+    </section>
+
+    <section class="feed" id="feed">
+      <div class="loading" id="loading">Fetching latest news…</div>
+      <ul class="story-list" id="storyList"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Sources: Al Jazeera, BBC News Middle East. For verification, always open the original article.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
