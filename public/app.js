@@ -7,6 +7,24 @@ const filterRelevantEl = document.getElementById('filterRelevant');
 
 let lastItems = [];
 
+// Liveblog card: URL and label come from the server (so you can change slug/date in one place)
+async function setLiveblogCard() {
+  const card = document.getElementById('liveblogCard');
+  if (!card) return;
+  try {
+    const res = await fetch(`/api/liveblog?t=${Date.now()}`, { cache: 'no-store' });
+    const data = await res.json();
+    if (data.url) card.href = data.url;
+    const titleEl = card.querySelector('.liveblog-title');
+    if (titleEl && data.title) titleEl.textContent = data.title;
+    const descEl = card.querySelector('.liveblog-desc');
+    if (descEl && data.description) descEl.textContent = data.description;
+  } catch (_) {
+    card.href = 'https://www.aljazeera.com/news/liveblog/';
+  }
+}
+setLiveblogCard();
+
 function formatTime(iso) {
   if (!iso) return '';
   const d = new Date(iso);
